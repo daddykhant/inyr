@@ -12,7 +12,7 @@ connectDB();
 
 // Define allowed origins
 const allowedOrigins = [
-  "http://localhost:5173", // frontend origin
+  "https://inyr.vercel.app/", // frontend origin
 ];
 
 // CORS middleware
