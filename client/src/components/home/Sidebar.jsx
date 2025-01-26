@@ -32,7 +32,7 @@ const Sidebar = () => {
         <NavLink
           className={({ isActive }) =>
             isActive
-              ? " border-primary  rounded-full shadow md:rounded-none md:border-b-2 "
+              ? " border-primary  rounded-full shadow md:rounded-none border-b-2 "
               : " border-none"
           }
           to="/books/textbook"
@@ -51,7 +51,7 @@ const Sidebar = () => {
         <NavLink
           className={({ isActive }) =>
             isActive
-              ? " border-primary  rounded-full shadow-md md:rounded-none md:border-b-2 md:hidden "
+              ? " border-primary  rounded-full shadow-md md:rounded-none border-b-2 md:hidden "
               : " border-none md:hidden"
           }
           to="/category"
@@ -70,7 +70,7 @@ const Sidebar = () => {
         <NavLink
           className={({ isActive }) =>
             isActive
-              ? " border-primary  rounded-full shadow-md md:rounded-none md:border-b-2 "
+              ? " border-primary  rounded-full shadow-md md:rounded-none border-b-2 "
               : " border-none"
           }
           to="/feedback"
