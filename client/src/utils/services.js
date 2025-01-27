@@ -1,6 +1,6 @@
 // import axios from "axios";
 
-export const baseUrl = "http://localhost:3000/api";
+export const baseUrl = "https://inyr.onrender.com/api";
 // export const postRequest = async (url, body) => {
 //   const response = await axios.post(url, body);
 //   const data = await response.json();
