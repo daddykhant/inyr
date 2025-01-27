@@ -15,17 +15,25 @@ connectDB();
 const allowedOrigins = ["https://inyr.vercel.app"]; // frontend origin
 
 // CORS middleware
+// app.use(
+//   cors({
+//     origin: function (origin, callback) {
+//       // Allow requests with no origin (like Postman or curl)
+//       if (!origin || allowedOrigins.includes(origin)) {
+//         return callback(null, true);
+//       }
+//       const msg =
+//         "The CORS policy for this site does not allow access from the specified origin.";
+//       return callback(new Error(msg), false);
+//     },
+//     credentials: true, // Allow cookies or HTTP authentication
+//   })
+// );
+
+// CORS middleware to allow all origins
 app.use(
   cors({
-    origin: function (origin, callback) {
-      // Allow requests with no origin (like Postman or curl)
-      if (!origin || allowedOrigins.includes(origin)) {
-        return callback(null, true);
-      }
-      const msg =
-        "The CORS policy for this site does not allow access from the specified origin.";
-      return callback(new Error(msg), false);
-    },
+    origin: "*", // Allow all origins
     credentials: true, // Allow cookies or HTTP authentication
   })
 );
