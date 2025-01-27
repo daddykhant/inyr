@@ -50,7 +50,7 @@ const Home = () => {
         {/* Header Section */}
         <div className="lg:flex ">
           <div className=" px-3 md:px-10 py-3 lg:py-8 text-white bg-banner shadow-xl rounded-xl relative overflow-hidden w-full">
-            <div className="absolute right-0 top-0 w-[28%] z-40 hidden lg:block">
+            <div className="absolute right-0 bottom-0 w-[28%] z-40 hidden lg:block">
               <img src={banner} alt="" />
             </div>
             <div className="flex flex-col justify-center z-50 text-xs md:text-sm text-gray-600">

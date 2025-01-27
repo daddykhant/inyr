@@ -92,12 +92,12 @@ const BookDetails = () => {
                 {book.bookname}
               </div>
               <div className="grid grid-flow-col grid-cols-5 gap-3 ">
-                <div className=" font-bold col-span-1">
+                <div className=" font-bold col-span-2 md:col-span-1">
                   <div className=" capitalize">Major : </div>
                   <div className="capitalize">Year :</div>
                   <div className="mb-3 capitalize">Semester :</div>
                 </div>
-                <div className=" col-span-4">
+                <div className=" col-span-3 md:col-span-4">
                   <div className=" capitalize">{book.major}</div>
 
                   <div className=" capitalize">{book.year} Year</div>
