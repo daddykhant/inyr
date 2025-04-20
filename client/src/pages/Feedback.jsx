@@ -9,7 +9,7 @@ const Feedback = () => {
     setClickCount(clickCount + 1);
     console.log(clickCount);
     if (clickCount === 5) {
-      navigate("/login");
+      navigate("/dashboard/login");
       setClickCount(0);
     }
   };

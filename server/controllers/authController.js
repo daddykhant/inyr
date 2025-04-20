@@ -38,7 +38,7 @@ exports.registerUser = async (req, res) => {
 
 exports.getAllUsers = async (req, res) => {
   try {
-    const users = await Admin.find(); // Fetch all users
+    const users = await Admin.find().select("-password"); // Fetch all users
 
     // Respond with users, even if the array is empty
     res.status(200).json(users);

@@ -266,7 +266,7 @@ exports.findBooksByBookname = async (req, res) => {
 
     if (books.length === 0) {
       return res
-        .status(200)
+        .status(404)
         .json({ message: `No books found matching: ${bookname}` });
     }
 

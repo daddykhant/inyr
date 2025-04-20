@@ -9,6 +9,8 @@ export const AuthProvider = ({ children }) => {
   const [auth, setAuth] = useState({ user: null, token: null, role: null });
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const [users, setUsers] = useState([]);
+  const [authAlert, setAuthAlert] = useState(false);
   const navigate = useNavigate();
 
   // Function to log in
@@ -19,7 +21,7 @@ export const AuthProvider = ({ children }) => {
       const response = await axios.post(`${baseUrl}/auth/login`, {
         username,
         password,
-      }); // Adjust the endpoint if necessary
+      });
       const { token, role } = response.data;
 
       // Set auth state
@@ -29,12 +31,9 @@ export const AuthProvider = ({ children }) => {
       localStorage.setItem("token", token);
       localStorage.setItem("role", role);
 
-      // Navigate based on role
-      if (role === "editor") {
-        navigate("/upload");
-      } else {
-        navigate("/dashboard");
-      }
+      // Navigate
+
+      navigate("/dashboard/control-panel");
     } catch (err) {
       // Handle errors and set error state
       setError(err.response?.data?.error || "An error occurred during login");
@@ -61,13 +60,73 @@ export const AuthProvider = ({ children }) => {
       return response.status === 200;
     } catch (err) {
       logout(); // Logout if token is invalid
+      console.log(err);
       return false;
+    }
+  };
+  //handle delete user
+  const handleDeleteUser = async (userId) => {
+    const confirmDelete = window.confirm(
+      "Are you sure you want to delete this user?"
+    );
+
+    if (!confirmDelete) return;
+
+    if (auth.role == "admin") {
+      try {
+        const response = await axios.delete(
+          `${baseUrl}/auth/delete/${userId}`,
+          {
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem("token")}`, // Replace with your token logic
+            },
+          }
+        );
+
+        alert(response.data.message);
+        setUsers(users.filter((user) => user._id !== userId)); // Update state after successful deletion
+      } catch (error) {
+        console.error("Error deleting user:", error);
+        alert(
+          error.response?.data?.error ||
+            "An error occurred while deleting the user."
+        );
+      }
+    } else {
+      setAuthAlert(true);
+    }
+  };
+  //Get Users
+
+  const getUsers = async () => {
+    try {
+      const response = await axios.get(`${baseUrl}/auth/users`, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`, // Replace with your token logic
+        },
+      });
+      setUsers(response.data);
+      console.log(response.data);
+    } catch (err) {
+      setError(err.response?.data?.error || "Failed to fetch users");
     }
   };
 
   return (
     <AuthContext.Provider
-      value={{ auth, login, logout, verifyToken, loading, error }}
+      value={{
+        auth,
+        login,
+        logout,
+        verifyToken,
+        loading,
+        error,
+        users,
+        getUsers,
+        handleDeleteUser,
+        authAlert,
+        setAuthAlert,
+      }}
     >
       {children}
     </AuthContext.Provider>

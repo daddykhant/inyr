@@ -19,8 +19,20 @@ export const GetBooksContextProvider = ({ children }) => {
   const [filteredBooks, setFilteredBooks] = useState([]);
   const [totalPages, setTotalPages] = useState(1);
   const [error, setError] = useState("");
+  const [books, setBooks] = useState([]);
 
   const navigate = useNavigate();
+
+  const getBooks = async () => {
+    try {
+      const response = await axios.get(`${baseUrl}/books/`);
+      setBooks(response.data.books);
+      console.log(response.data.books);
+    } catch (err) {
+      console.log(err);
+      setError("Error fetching books. Please try again ...");
+    }
+  };
 
   // Toggle menu open/close
   const handleMenuClick = () => {
@@ -84,8 +96,7 @@ export const GetBooksContextProvider = ({ children }) => {
     try {
       const response = await axios.delete(`${baseUrl}/books/delete/${id}`);
       console.log(response.data);
-      // Fetch books again after deleting
-      handleSubmit();
+      getBooks();
     } catch (error) {
       console.error("Error deleting book:", error);
     }
@@ -111,6 +122,8 @@ export const GetBooksContextProvider = ({ children }) => {
         handlePageChange,
         handleDelete,
         error,
+        getBooks,
+        books,
       }}
     >
       {children}

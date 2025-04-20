@@ -1,34 +1,44 @@
-import { useContext } from "react";
-import { menuIcon } from "../../assets";
-import { GetBooksContext } from "../../contexts/GetBook";
+import { FaArrowRightFromBracket, FaXmark } from "react-icons/fa6";
+import { Link, NavLink } from "react-router-dom";
 
-const Navbar = () => {
-  const { handleMenuClick } = useContext(GetBooksContext);
+const NavBar = () => {
   return (
-    <div className="flex px-5 md:px-10 py-3 justify-between items-center">
-      <div className="font-bold text-xl md:text-3xl ">M E C H</div>
-      <select name="" id="" className="flex items-center gap-2 ">
-        <option value="textbook" className=" hover:bg-blue">
-          Text Books
-        </option>
-        <option value="thesis" className=" hover:bg-blue">
-          Thesis
-        </option>
-        <option value="other" className=" hover:bg-blue">
-          Other
-        </option>
-      </select>
+    <div className=" p-5 flex justify-between md:justify-normal items-center gap-8 border-2 rounded-b-xl  bg-white/30 backdrop-blur-lg border-zinc-200">
+      <div className=" text-xl font-semibold">ArtPrompt</div>
+      <div className="flex justify-between items-center gap-5 w-full">
+        <div className="  items-center gap-8 flex">
+          <NavLink
+            className={({ isActive }) =>
+              `transition ${
+                isActive
+                  ? "border-b-2 border-black"
+                  : "hover:border-b-2 border-pink-600"
+              }`
+            }
+            to="/dashboard/control-panel"
+          >
+            Dashboard
+          </NavLink>
 
-      <div className="flex items-center gap-5">
-        <div className=" cursor-pointer w-5 md:w-8" onClick={handleMenuClick}>
-          <img src={menuIcon} alt="" />
+          <NavLink
+            className={({ isActive }) =>
+              `transition ${
+                isActive
+                  ? "border-b-2 border-black"
+                  : "hover:border-b-2 border-pink-600"
+              }`
+            }
+            to="/dashboard/users"
+          >
+            Members
+          </NavLink>
         </div>
-      </div>
-      <div className="hidden">
-        <img src={menuIcon} alt="" />
+        <Link to="/" className="">
+          <FaArrowRightFromBracket />
+        </Link>
       </div>
     </div>
   );
 };
 
-export default Navbar;
+export default NavBar;
