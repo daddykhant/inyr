@@ -79,7 +79,7 @@ const BookDetails = () => {
             </Link>
           </div>
           <div className="block lg:grid grid-cols-2">
-            <div className=" w-32 md:w-64 lg:w-52 lg:h-72 object-cover overflow-hidden rounded-lg mx-auto mb-10 md:mb-0">
+            <div className=" w-32 md:w-64 lg:w-52 lg:h-72 object-cover overflow-hidden rounded-lg mx-auto mb-10 md:mb-3">
               <img
                 src={`data:image/jpeg;base64,${book.thumbnail}`}
                 alt={book.bookname}

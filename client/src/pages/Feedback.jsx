@@ -56,6 +56,14 @@ const Feedback = () => {
                   <img src={viber} alt="" className=" w-8 h-8 mr-5" />
                 </a>
               </div>
+              <div className=" py-5">or</div>
+              <a
+                href="https://kthz.vercel.app"
+                target="_blank"
+                className=" underline"
+              >
+                https://kthz.vercel.app
+              </a>
             </div>
           </div>
         </div>

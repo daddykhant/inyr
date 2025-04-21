@@ -89,11 +89,12 @@ const Sidebar = () => {
       </div>
 
       <a
-        href="#"
+        href="https://kthz.vercel.app"
+        target="_blank"
         className=" text-xs hidden md:flex flex-col items-center justify-center bottom-5 absolute "
       >
         <div className="">Product of </div>
-        <div className=" font-bold text-lg"> K T H Z</div>
+        <div className=" font-bold text-lg">K T H Z</div>
       </a>
     </div>
   );

@@ -86,7 +86,7 @@ const MajorDetails = () => {
           <Link to="/books/textbook" className="hidden md:block">
             <img src={leftIcon} alt="" className="" />
           </Link>
-          <div className="capitalize font-bold text-2xl mb-5 w-full text-center">
+          <div className="capitalize font-bold textbase md:text-lg lg:text-2xl mb-5 w-full text-center">
             {major === "ep"
               ? "Electrical Power"
               : major === "ec"
